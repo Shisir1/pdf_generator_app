@@ -13,9 +13,12 @@ public class Main {
         try {
             PdfWriter.getInstance(document, new FileOutputStream("iTextHelloWorld.pdf"));
             document.open();
-            Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+            Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.RED);
             Chunk chunk = new Chunk("Hello World", font);
             Image img = Image.getInstance(Paths.get("MLOasBroker.png").toAbsolutePath().toString());
+            img.setAlignment(Image.ALIGN_CENTER);
+            img.scalePercent(50);
+            //img.scaleToFit(400,300);
             document.add(new Paragraph(chunk));
             document.add(img);
         } catch (DocumentException | IOException ex) {
